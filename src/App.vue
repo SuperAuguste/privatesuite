@@ -1,10 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <p v-html="this.title"/>
       <MainNav/>
     </div>
-    <router-view/>
   </div>
 </template>
 
@@ -28,13 +26,10 @@ export default {
   mounted() {
     this.dataFetch();
   },
-  //cannot "output an action" if you try <p vhtml="dataFetch()". You want to output theresult. Therefore, run it in mounted.
   methods: {
     dataFetch() {
       this.$http.get('').then((response) => {
         this.title = response.body.name;
-        // console.log(this.title);
-        // return this.title;
       });
     }
   }

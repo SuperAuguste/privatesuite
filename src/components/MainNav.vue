@@ -1,17 +1,9 @@
 <template>
   <div class="hello">
     <div class="left">
-      <h1>{{title}}</h1>
-      <ul>
-        <li v-for="(link, index) in links" :key="index">
-          {{ link }}
-          </li>
-      </ul>
-
-
+          <p> This is the MainNav.</p>
+          <h1> {{title}} </h1>
       </div>
-
-
   <div class="right">
 
       </div>
@@ -20,33 +12,20 @@
 
 <script>
 
-//helper that helps us access the data from the vue x
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'MainNav',
-  //computed array 
 
-  // computed: mapState ({
-  //   //this aliases the title from vuex to the name custom
-  //   custom: 'title'
-  // })
-
-  computed:  {
-    ...mapGetters([
-      //this is for if you want to add other properties to computed
+  computed: { 
+    ...mapState ([
       'title',
       'links'
-    ])
+    ]),
   }
-
-  // computed: mapState ([
-  //   'title'
-  // ])
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
