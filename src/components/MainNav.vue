@@ -1,13 +1,17 @@
 <template>
-  <div class="hello">
-    <div class="left">
-          <p> This is the MainNav.</p>
-          <h1> {{title}} </h1>
-      </div>
-  <div class="right">
+  <div class="main-nav">
+    
+          <div class="menu">
+            <!-- The title -->
+            <h1> {{this.header}} </h1>
+            <!-- The links -->
+            <div class="menu-items" v-for="(idx, i) in this.navItems" :key="i">
+              <a href="#" class="link"> {{idx.link}} </a>
+            </div>
 
+
+         </div>
       </div>
-  </div>
 </template>
 
 <script>
@@ -17,28 +21,79 @@ import { mapState } from 'vuex'
 export default {
   name: 'MainNav',
 
+  data() {
+    let header = ''
+     let navItems = [
+          {
+            link: 'Issue4'
+          },
+          {
+            link: 'News'
+          },
+          {
+            link: 'Reviews'
+          },
+          {
+            link: 'Features'
+          },
+          {
+            link: 'Fiction'
+          },
+          {
+            link: 'Podcast'
+          },
+        ];
+
+      return {
+        navItems,
+        header
+      }
+  },
+  //grabbing the values from wordpress, and assigning them to the variables
+  methods: {
+    dataFetch() {
+      this.$http.get('').then((response) => {
+        this.header = response.body.name;
+      });
+    },
+  },
+  mounted() {
+     this.dataFetch();
+  },
   computed: { 
-    ...mapState ([
-      'title',
-      'links'
-    ]),
+    // ...mapState ([
+    //   'links',
+    //   'title'
+    // ]),
   }
+
+
 }
 </script>
 
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
+<style  scoped>
+
+@import "../stylesheets/styles.css";
+
+.menu {
+  position: relative
 }
 a {
-  color: #42b983;
+  text-decoration: none;
+}
+.menu-items {
+  font-family: 'TSTAR Mono Round';
+  position: relative;
+  display: inline-block;
+  padding: 0em 3em;
+}
+.link {
+  position: relative;
+}
+h1 {
+  text-transform: uppercase;
+  font-size: 5em;
+  position: relative;
+  margin-bottom: 5px;
 }
 </style>

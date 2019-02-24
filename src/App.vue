@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <MainNav/>
+      <News/>
     </div>
   </div>
 </template>
@@ -9,34 +10,25 @@
 <script>
 
 import MainNav from '@/components/MainNav.vue'
+import News from '@/components/News.vue'
 
 export default {
-  name: 'HelloWorld',
+  name: 'App',
   components: {
-    MainNav
+    MainNav,
+    News
   },
   data () {
-    
     return {
-      title: '',
-      msg: 'Welcome to Your Vue.js App',
-      projects:[]
-    }
-  },
-  mounted() {
-    this.dataFetch();
-  },
-  methods: {
-    dataFetch() {
-      this.$http.get('').then((response) => {
-        this.title = response.body.name;
-      });
+      
     }
   }
+ 
 }
 </script>
 
 <style>
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -45,7 +37,7 @@ export default {
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  padding: 0px;
 }
 
 #nav a {
