@@ -5,8 +5,8 @@
             <!-- The title -->
             <h1> {{this.header}} </h1>
             <!-- The links -->
-            <div class="menu-items" v-for="(link, i) in this.links" :key="i">
-              <a :href="link.url" v-html="link.title" target="_blank"/>
+            <div class="menu-items" v-for="(item, i) in this.links" :key="i">
+              <a :href="item.url" v-html="item.title" target="_blank"/>
             </div>
 
          </div>
@@ -27,14 +27,15 @@ export default {
 
       return {
         links,
-        header,
+        header
       }
   },
   //grabbing the values from wordpress, and assigning them to the variables
   methods: {
     linkFetch() {
-      this.$http.get('wp/v2/pages/?slug=homepage').then((response) => {
-        this.links = response.body[0].acf.links;titleFetch
+      this.$http.get('wp-api-menus/v2/menus/27').then((response) => {
+        this.links = response.body.items;
+        // console.log(this.links);
       });
     },
  titleFetch() {
@@ -47,7 +48,7 @@ export default {
   },
   mounted() {
      this.linkFetch();
-       this.titleFetch();
+    this.titleFetch();
   },
   computed: { 
     // ...mapState ([
