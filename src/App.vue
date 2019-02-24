@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <MainNav/>
-      <News/>
+      <!-- <News/> -->
     </div>
   </div>
 </template>

@@ -1,0 +1,21 @@
+
+h1 {
+    font-family: 'Campton Bold Italic';
+}
+#nav{
+    padding: 0px;
+}
+@font-face {
+    font-family: 'Campton Bold Italic';
+    src: url('../fonts/Campton/Campton-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TSTAR Mono Round';
+    src: url('../fonts/TStarMono/TSTARMonoRoundRegular.otf') format('truetype');
+}
+
+html {
+    background-color: #F8E5EB;
+
+}

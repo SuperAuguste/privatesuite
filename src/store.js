@@ -6,7 +6,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource);
 Vue.use(Vuex);
 
-Vue.http.options.root = 'https://privatesuitemag.com/wp-json'
+Vue.http.options.root = 'https://privatesuitemag.com/wp-json/'
 
 
 export const store = new Vuex.Store({

@@ -5,10 +5,9 @@
             <!-- The title -->
             <h1> {{this.header}} </h1>
             <!-- The links -->
-            <div class="menu-items" v-for="(idx, i) in this.navItems" :key="i">
-              <a href="#" class="link"> {{idx.link}} </a>
+            <div class="menu-items" v-for="(link, i) in this.links" :key="i">
+              <a :href="link.url" v-html="link.title" target="_blank"/>
             </div>
-
 
          </div>
       </div>
@@ -23,51 +22,39 @@ export default {
 
   data() {
     let header = ''
-     let navItems = [
-          {
-            link: 'Issue4'
-          },
-          {
-            link: 'News'
-          },
-          {
-            link: 'Reviews'
-          },
-          {
-            link: 'Features'
-          },
-          {
-            link: 'Fiction'
-          },
-          {
-            link: 'Podcast'
-          },
-        ];
+    let links = []
+    
 
       return {
-        navItems,
-        header
+        links,
+        header,
       }
   },
   //grabbing the values from wordpress, and assigning them to the variables
   methods: {
-    dataFetch() {
+    linkFetch() {
+      this.$http.get('wp/v2/pages/?slug=homepage').then((response) => {
+        this.links = response.body[0].acf.links;titleFetch
+      });
+    },
+ titleFetch() {
       this.$http.get('').then((response) => {
         this.header = response.body.name;
       });
-    },
+    }
+
+
   },
   mounted() {
-     this.dataFetch();
+     this.linkFetch();
+       this.titleFetch();
   },
   computed: { 
     // ...mapState ([
     //   'links',
     //   'title'
     // ]),
-  }
-
-
+  },
 }
 </script>
 
@@ -76,7 +63,8 @@ export default {
 @import "../stylesheets/styles.css";
 
 .menu {
-  position: relative
+  position: relative;
+  width: 100%;
 }
 a {
   text-decoration: none;
