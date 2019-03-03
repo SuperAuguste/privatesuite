@@ -1,6 +1,19 @@
-
-h1 {
+.slice {
+    padding: 5em 0;
+}
+*{
+    position: relative;
+}
+h1, h3 {
     font-family: 'Campton Bold Italic';
+    text-transform: uppercase;
+}
+h3 {
+    font-size: 1.5em;
+}
+h4 {
+    font-family: 'Campton SemiBold';
+    font-size: 1.1em;
 }
 #nav{
     padding: 0px;
@@ -11,6 +24,11 @@ h1 {
 }
 
 @font-face {
+    font-family: 'Campton SemiBold';
+    src: url('../fonts/Campton/Campton-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
     font-family: 'TSTAR Mono Round';
     src: url('../fonts/TStarMono/TSTARMonoRoundRegular.otf') format('truetype');
 }
@@ -18,4 +36,17 @@ h1 {
 html {
     background-color: #F8E5EB;
 
+}
+p{
+    
+    font-family: 'TSTAR Mono Round';
+    font-size: 15px;
+    text-align: left;
+    
+}
+.background-lines-container {
+    z-index: -1;
+}
+a {
+    text-decoration: none;
 }

@@ -1,12 +1,17 @@
 <template>
   <div id="app">
     <div id="nav">
+
       <div class="background-lines-container">
         <div class="background-lines" v-for="i in 11" :key="i"> &nbsp;</div>
-      
         </div>
+
+
       <MainNav/>
+      <Reviews/>
+      <News/>
       <Footer/>
+
       <!-- <News/> -->
     </div>
   </div>
@@ -17,13 +22,15 @@
 import MainNav from '@/components/MainNav.vue'
 import News from '@/components/News.vue'
 import Footer from '@/components/Footer.vue'
+import Reviews from '@/components/Reviews.vue'
 
 export default {
   name: 'App',
   components: {
     MainNav,
     News,
-    Footer
+    Footer,
+    Reviews
   },
   data () {
     return {
@@ -42,6 +49,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding: 0 calc((100% / 11) - 7px);
 }
 .background-lines-container {
   display: flex;

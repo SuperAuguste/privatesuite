@@ -48,7 +48,7 @@ export default {
   //grabbing the values from wordpress, and assigning them to the variables
   methods: {
     linkFetch() {
-      this.$http.get('wp-api-menus/v2/menus/27').then((response) => {
+      this.$http.get('wp-api-menus/v2/menus/29').then((response) => {
         this.links = response.body.items;
 
         for(const i in this.links) {
@@ -100,7 +100,7 @@ export default {
 .menu-links-wrap {
 
   font-family: 'TSTAR Mono Round';
-  margin: 2em calc(100% / 11) 0px;
+  margin: 2em 0px;
 }
 .menu-links{
   display: flex;
@@ -125,7 +125,6 @@ a {
   text-align: center;
 }
 h1 {
-  text-transform: uppercase;
   font-size: 5em;
   position: relative;
   margin-bottom: 5px;
