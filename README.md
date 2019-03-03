@@ -1,4 +1,4 @@
-# vuestate
+# privatesuite
 
 ## Project setup
 ```
