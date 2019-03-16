@@ -119,6 +119,8 @@ a {
 }
 .children-links-container {
   padding-top: 1em;
+  position: absolute;
+  width: 100%;
 }
 .children-links {
   display: block;
