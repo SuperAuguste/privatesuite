@@ -3,8 +3,9 @@
     
           <div class="menu">
             <!-- The title -->
-            <h1> {{this.header}} </h1>
+           <h1>{{title}}</h1>
             <!-- The links -->
+
             <div class="menu-links-wrap">
             <div class="menu-links">
           
@@ -16,7 +17,7 @@
             </div>
             
                 <div class="children-links-container" v-if="showDropdown == true">
-                  <div class="children-links" :style="{ width : computeDropdownSize(links.length) + '%'}" v-for="(item, i) in this.childrenLinks" :key="i" >
+                  <div class="children-links" :style="{ width : computeDropdownSize(links.length) + '%'}" v-for="(item, i) in this.linkChildren" :key="i" >
                     <a :href="item.url" v-html="item.title" target="_blank"/>
                 </div>
                 </div>
@@ -33,59 +34,31 @@ export default {
   name: 'MainNav',
 
   data() {
-    let header = ''
-    let links = []
-    let childrenLinks = []
     let showDropdown = false
   
       return {
-        header,
-        links,
-        childrenLinks,
         showDropdown
       }
   },
-  //grabbing the values from wordpress, and assigning them to the variables
+  // grabbing the values from wordpress, and assigning them to the variables
   methods: {
-    linkFetch() {
-      this.$http.get('wp-api-menus/v2/menus/29').then((response) => {
-        this.links = response.body.items;
-
-        for(const i in this.links) {
-          //there is no error but it's being stupid :(
-          if (response.body.items[i].children.length > 0) {
-           this.childrenLinks = response.body.items[i].children;
-          }
-        }
-
-      });
-    },
+    
   toggleDropdown() {
       this.showDropdown = !this.showDropdown;
       return this.showDropdown;
-    },
- titleFetch() {
-      this.$http.get('').then((response) => {
-        this.header = response.body.name;
-      });
     },
 
   computeDropdownSize(length) {
       return length = 100 / length;
     },
-
-
   },
   mounted() {
-     this.linkFetch();
-      this.titleFetch();
   },
-  computed: { 
-    // ...mapState ([
-    //   'links',
-    //   'title'
-    // ]),
-  },
+  computed: mapState ([
+      'title',
+      'links',
+      'linkChildren'
+    ])
 }
 </script>
 

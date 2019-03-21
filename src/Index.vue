@@ -1,68 +1,58 @@
 <template>
   <div id="index">
+    <div class="preloader" v-if="!preloader"><p class="loading">LOADING LOADING LOADING. preloader goes here. it will be something rad. but until then, it's this random screen</p></div>
+
+    <Background/>
     
-<router-view/>
-    <p v-if="false">loading</p>
+      <router-view/>
+    
   </div>
 </template>
 
 <script>
+import Background from '@/Background.vue'
+import { mapState } from 'vuex' 
+
 
 export default {
   name: 'Index',
   components: {
+    Background  
   },
-  data () {
-    return {
-      
-    }
-  }
+  mounted() {
+  // console.log(this.$http);
+    this.$store.dispatch('loadData');
+  },
+    computed: mapState ([
+      'preloader'
+    ])
+
  
 }
 </script>
 
 <style>
-/* 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  padding: 0 calc((100% / 11) - 7px);
-}
-.background-lines-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
-.background-lines {
-  width: calc(100% / 11);
-  height: 100%;
-  margin: auto;
-  display: inline-block;
-  border: 0.1px solid white;
-}
-#nav {
-  padding: 0px;
-  margin: 0;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-.footer {
+#index {
+  /* background:white; */
+  height: 100vh;
   position: absolute;
-  width: 100%;
-  top: 0;
-  margin-top: 60vh;
-} */
+}
+.preloader {
+  position: absolute;
+  z-index:100;
+  width: 200vh;
+  overflow: hidden;
+  display:flex;
+  margin:auto;
+  top: -1vh;
+  left: -1vh;
+  height: 101vh;
+  background: white;
+}
+.loading {
+  color:black;
+  position: relative;
+  z-index:101;
+  margin:auto;
+}
 </style>

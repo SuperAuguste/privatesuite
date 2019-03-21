@@ -1,7 +1,5 @@
 <template>
 <div>
-    <Page/>
-     <div id="app">
         <div id="nav">
 
         <!-- Change this name to exactly the name of the page (i.e. about, issue, features) -->
@@ -20,8 +18,6 @@
 
                 </div>
             </div>
-        <Footer/>
-    </div>
 </template>
 
 <script>

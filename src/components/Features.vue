@@ -7,7 +7,7 @@
                     <h1 class="title">Features</h1>
                 </div>
                 <div class="post-title-wrap">
-                    <transition class="post-title" v-for="idx in this.postCopy" :key="idx">
+                    <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
                        <div class="slider" v-if="idx.link.includes('features')">
                          <div class="image"/>
                          <div class="copy">
@@ -30,32 +30,14 @@ export default {
   name: 'Features',
 
   data() {
-    let postCopy = ''
-    let category = ''
 
       return {
-        postCopy,
-        category
       }
   },
   //grabbing the values from wordpress, and assigning them to the variables
-  methods: {
-    postFetch() {
-      this.$http.get('wp/v2/posts').then((response) => {
-       this.postCopy = response.body;
-      });
-    },
-
-    postCategoryFetch() {
-      this.$http.get('wp/v2/categories').then((response) => {
-       this.category = response.body;
-      });
-    }
-  },
-  mounted() {
-     this.postFetch();
-     this.postCategoryFetch();
-  }
+    computed: mapState ([
+      'postBody'
+    ])
 }
 </script>
 
