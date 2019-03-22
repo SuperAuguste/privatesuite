@@ -18,9 +18,10 @@ export default new Vuex.Store({
     links: [],
     linkChildren: [],
     postBody: '**',
-    preloader: false
-
-
+    preloader: false,
+    footer: '',
+    credits:'',
+    slug: 'spirit-trademark'
     },
 
 
@@ -46,6 +47,15 @@ export default new Vuex.Store({
       //post category (CURRENTLY NOT IN USE)
     updatePostCategory(state, postCategory ) {
       Vue.set(state, 'postCategory', postCategory);
+    },
+    updateFooter(state, footer ) {
+      Vue.set(state, 'footer', footer);
+    },
+    updateAbout(state, about ) {
+      Vue.set(state, 'about', about);
+    },
+    updateCredits(state, credits ) {
+      Vue.set(state, 'credits', credits);
     }
   
   },
@@ -60,14 +70,7 @@ export default new Vuex.Store({
         commit('updateTitle', this.title);
 
       });
-      //nav links
-      await axios.get(api + 'wp-api-menus/v2/menus/29').then((response) => {
-        this.links = response.data.items;
-
-        commit('updateLinks', this.links);
-
-      });
-      //link dropdown
+      //links + dropdown
       await axios.get(api + 'wp-api-menus/v2/menus/29').then((response) => {
         this.links = response.data.items;
         for (let i in this.links) {
@@ -75,6 +78,8 @@ export default new Vuex.Store({
             this.childArray = this.links[i].children;
           }
         }
+        commit('updateLinks', this.links);
+
         commit('updateLinkChildren', this.childArray);
       });
       //post body copy
@@ -89,7 +94,25 @@ export default new Vuex.Store({
         
         commit('updatePostCategory', this.postCategory);
       });
+//footer
+      await axios.get(api + 'acf/v3/options/options').then((response) => {
+        this.footer = response.data.acf;
+        
+        commit('updateFooter', this.footer);
+      });
 
+      //about
+      await axios.get(api + 'wp/v2/pages/167').then((response) => {
+        this.about = response.data;
+        
+        commit('updateAbout', this.about);
+      });
+      //credits
+      await axios.get(api + 'wp/v2/pages/167').then((response) => {
+        this.about = response.data;
+        
+        commit('updateAbout', this.about);
+      });
 
 
       this.preloader = true;

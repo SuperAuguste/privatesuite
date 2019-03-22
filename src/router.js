@@ -2,10 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Page from './Page.vue'
 import About from './Pages/About.vue'
-import FeaturesPage from './Pages/FeaturesPage.vue'
-import FictionPage from './Pages/FictionPage.vue'
-import NewsPage from './Pages/NewsPage.vue'
-import ReviewsPage from './Pages/ReviewsPage.vue'
+import PostPage from './Pages/PostPage.vue'
+// import FictionPage from './Pages/FictionPage.vue'
+// import NewsPage from './Pages/NewsPage.vue'
+// import ReviewsPage from './Pages/ReviewsPage.vue'
+import Credits from './Pages/Credits.vue'
+
 
 
 
@@ -37,31 +39,29 @@ export default new VueRouter( {
           component: About
         },
         {
-          path: 'features',
-          name: 'FeaturesPage',
-          component: FeaturesPage
+          path: ':slug',
+          name: 'PostPage',
+          component: PostPage,
+          children: [
+            {
+            path: ':slug',
+             name: 'PostPage',
+             component: PostPage
+            }
+          ]
+
         },
         {
-          path: 'fiction',
-          name: 'FictionPage',
-          component: FictionPage
-        },
-        {
-          path: 'news',
-          name: 'NewsPage',
-          component: NewsPage
-        },
-        {
-          path: 'reviews',
-          name: 'ReviewsPage',
-          component: ReviewsPage
+          path: 'credits',
+          name: 'Credits',
+          component: Credits
         }
       ]
     },
     {
     path: '/:slug',
     //i needa add a 404 page to this later
-    component: Page
+    component: PostPage
     }
   ]
 });

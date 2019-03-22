@@ -22,14 +22,11 @@
 
 <script>
 
-import Page from '@/Page.vue'
-import Footer from '@/components/Footer.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'About',
   components: {
-   Page,
-   Footer
   },
   data () {
       let copy = ''
@@ -37,16 +34,9 @@ export default {
       copy
     }
   },
-    methods: {
-    fetchData() {
-      this.$http.get('wp/v2/pages/167').then((response) => {
-       this.copy = response.body;
-      });
-    },
-    },
-    mounted() {
-        this.fetchData();
-    }
+  computed: mapState ([
+    ''
+  ]),
  
 }
 </script>

@@ -1,18 +1,15 @@
 <template>
 <div>
-
-
-       
         <div id="nav">
 
             <div id="about">
 
 
                 <div class="title-container">
-                    <h1 class="title-shadow">{{this.title}}</h1>
-                    <h1 class="title">{{this.title}}</h1>
+                    <h1 class="title-shadow">{{about.title.rendered}}</h1>
+                    <h1 class="title">{{about.title.rendered}}</h1>
                 </div>
-                <p v-html="this.copy"/>
+                <p v-html="about.content.rendered"/>
                 
 
             </div>
@@ -25,6 +22,8 @@
 
 import Page from '@/Page.vue'
 import Footer from '@/components/Footer.vue'
+import { mapState } from 'vuex'
+
 
 export default {
   name: 'About',
@@ -33,25 +32,12 @@ export default {
    Footer
   },
   data () {
-      let copy = ''
-      let title = ''
     return {
-      copy,
-      title
     }
   },
-    methods: {
-    fetchData() {
-      this.$http.get('wp/v2/pages/167').then((response) => {
-       this.copy = response.body.content.rendered;
-       console.log(this.copy);
-       this.title = response.body.title.rendered;
-      });
-    },
-    },
-    mounted() {
-        this.fetchData();
-    }
+    computed: mapState ([
+      'about'
+    ])
  
 }
 </script>
