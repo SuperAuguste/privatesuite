@@ -1,7 +1,6 @@
 <template>
   <div id="index">
     <div class="preloader" v-if="!preloader"><p class="loading">LOADING LOADING LOADING. preloader goes here. it will be something rad. but until then, it's this random screen</p></div>
-
     <Background/>
     
       <router-view/>

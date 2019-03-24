@@ -2,10 +2,10 @@
     <div class="slice">
         <div class="post-wrap">
             <div class="features">
-                 <div class="title-container">
+                 <!-- <div class="title-container">
                     <h1 class="title-shadow">Features</h1>
                     <h1 class="title">Features</h1>
-                </div>
+                </div> -->
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
                        <div class="slider" v-if="idx.link.includes('features')">
@@ -56,7 +56,7 @@ export default {
   height: 100%;
   position: relative;
   width: 100%;
-  background-color: pink;
+  background-color: white;
   opacity: 0.5;
   width: calc((2 / 3) * 100%);
 }

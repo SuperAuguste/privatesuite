@@ -1,8 +1,6 @@
 <template>
   <div class="home">
     <router-view/>
-  THIS IS HOME PAGE WOO HOO
-<Features/>
 <Fiction/>
 <News/>
 <Reviews/>

@@ -5,21 +5,30 @@
           
 
             <div class="fiction">
-                <div class="title-container">
+                <!-- <div class="title-container">
                     <h1 class="title-shadow">Fiction</h1>
                     <h1 class="title">Fiction</h1>
-                </div>
+                </div> -->
+                  <!-- {{postBody}} -->
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
+
                         <div class="slider" v-if="idx.link.includes('fiction')">
+
                           <div class="image"/>
+                <router-link :to="idx.link.replace('https://privatesuitemag.com', '')">
+
                           <div class="copy">
                             <h4 v-html="idx.title.rendered"/>
                             <p v-html="idx.content.rendered.slice(0,150) + '...'"/>
                           </div>
+                 </router-link>
+
                     </div>
+
                     </transition>
                 </div>
+
             </div>
 
 

@@ -1,9 +1,13 @@
 <template>
   <div class="main-nav">
-    
           <div class="menu">
             <!-- The title -->
-           <h1>{{title}}</h1>
+            <div class="title">
+           <h1 class="outline"><router-link to="/">{{title}}</router-link></h1>
+           <h1 class="fill">{{title}}</h1>
+
+
+           </div>
             <!-- The links -->
 
             <div class="menu-links-wrap">
@@ -17,7 +21,7 @@
             </div>
             
                 <div class="children-links-container" v-if="showDropdown == true">
-                  <div class="children-links" :style="{ width : computeDropdownSize(links.length) + '%'}" v-for="(item, i) in this.linkChildren" :key="i" >
+                  <div class="children-links" v-for="(item, i) in this.linkChildren" :key="i" >
                     <a :href="item.url" v-html="item.title" target="_blank"/>
                 </div>
                 </div>
@@ -65,27 +69,58 @@ export default {
 <style  scoped>
 
 @import "../stylesheets/styles.css";
+.title {
+  /* position:fixed; */
 
+    /* white-space: nowrap; */
+    padding-bottom: 4em;
+}
+.title .outline{
+  margin: 0;
+  font-size:8em;
+  text-align: left;
+              -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: transparent;
+      line-height: 1em;
+      padding-top: 1em;
+}
+.title .fill{
+  margin: 0;
+  font-size:8em;
+  text-align: left;
+  line-height: 1em;
+  padding-top: 1em;
+  color: lightblue;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index:-1;
+}
 .menu {
   position: relative;
   width: 100%;
 }
 .menu-links-wrap {
-
+    position: fixed;
+    right: 2em;
+    top: 2em;
   font-family: 'TSTAR Mono Round';
-  margin: 2em 0px;
+  /* margin: 2em 0px; */
 }
 .menu-links{
-  display: flex;
+     text-align: right;
+  /* position:absolute; */
+
+
 }
 a {
   text-decoration: none;
 }
 .links {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
   /* padding: 0em 3em; */
-  margin: auto;
+  margin: 1em 0;
 }
 .link {
   position: relative;

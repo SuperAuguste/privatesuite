@@ -5,10 +5,10 @@
           
  <div class="news">
             
-                <div class="title-container">
+                <!-- <div class="title-container">
                     <h1 class="title-shadow">News</h1>
                     <h1 class="title">News</h1>
-                </div>
+                </div> -->
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
                       <div class="slider" v-if="idx.link.includes('news')">
@@ -69,8 +69,8 @@ export default {
 }
 .slider {
     width: calc((5 / 9) * 100%);
-    height: 20em;
-    margin-bottom: 5em;  
+    /* height: 20em; */
+    /* margin-bottom: 5em;   */
 }
 .title-container h1{
     font-size: 4em;

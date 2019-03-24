@@ -20,8 +20,7 @@ export default new Vuex.Store({
     postBody: '**',
     preloader: false,
     footer: '',
-    credits:'',
-    slug: 'spirit-trademark'
+    credits:''
     },
 
 
