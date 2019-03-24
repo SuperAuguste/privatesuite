@@ -12,10 +12,13 @@
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
                       <div class="slider" v-if="idx.link.includes('reviews')">
                         <div class="image"/>
+                          <a :href="idx.link.replace('https://privatesuitemag.com', '')">
+
                         <div class="copy">
                           <h4 v-html="idx.title.rendered"/>
                           <p v-html="idx.content.rendered.slice(0,150) + '...'"/>
                         </div>
+                        </a>
                     </div>
                     </transition>
                 </div>

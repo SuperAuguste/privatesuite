@@ -16,7 +16,7 @@
                 
                 <div class="links" v-for="(item, i) in this.links" :key="i">
                   <a class="dropdown" @click.prevent="toggleDropdown()" :href="item.url" v-if="item.title == 'Issues'" v-html="item.title" target="_blank"/>
-                  <a :href="item.url" v-if="item.title != 'Issues'" v-html="item.title" target="_blank"/>
+                  <a :href="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" />
                 </div>
             </div>
             
@@ -55,6 +55,10 @@ export default {
   computeDropdownSize(length) {
       return length = 100 / length;
     },
+
+  reloadPage() {
+this.$router.go();
+  }
   },
   mounted() {
   },

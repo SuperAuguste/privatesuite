@@ -16,13 +16,13 @@
                         <div class="slider" v-if="idx.link.includes('fiction')">
 
                           <div class="image"/>
-                <router-link :to="idx.link.replace('https://privatesuitemag.com', '')">
+                <a :href="idx.link.replace('https://privatesuitemag.com', '')">
 
                           <div class="copy">
                             <h4 v-html="idx.title.rendered"/>
                             <p v-html="idx.content.rendered.slice(0,150) + '...'"/>
                           </div>
-                 </router-link>
+                 </a>
 
                     </div>
 
