@@ -11,7 +11,7 @@
                 </div> -->
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
-                      <div class="slider" v-if="idx.link.includes('news')">
+                      <div class="slider" v-if="sortedPosts(idx.link)">
                         <div class="image"/>
                           <a :href:to="idx.link.replace('https://privatesuitemag.com', '')">
                         <div class="copy">
@@ -44,6 +44,13 @@ export default {
       return {
       }
   },
+  methods: {
+    sortedPosts(link) {
+      if (link.toString().includes('news')) {
+        return true;
+      }
+    }
+  },
   //grabbing the values from wordpress, and assigning them to the variables
   computed: mapState ([
     'postBody'
@@ -51,48 +58,47 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style lang="stylus" scoped>
 
-@import "../stylesheets/styles.css";
-.post-title-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-}
-.post-wrap:nth-child(even) > .slider{
-      width: calc((2 / 9) * 100%);
-}
-.image {
-    height: 100%;
-    position: relative;
-    width: 100%;
-    background-color: pink;
-    opacity: .5;
-    width: calc((5 / 9) * 100%);
-}
-.slider {
-    width: calc((5 / 9) * 100%);
-    /* height: 20em; */
-    /* margin-bottom: 5em;   */
-}
-.title-container h1{
-    font-size: 4em;
-    margin-bottom: 0;
-    text-align: left;
-    margin-top: 0;
-    -webkit-text-stroke: 1px black;
-    -webkit-text-fill-color: transparent;
+@import "../stylesheets/styles.styl"
+.post-title-wrap 
+    display flex
+    flex-wrap wrap
+    margin auto
+
+.post-wrapnth-child(even) > .slider
+      width calc((2 / 9) * 100%)
+
+.image 
+    height 100%
+    position relative
+    width 100%
+    background-color pink
+    opacity .5
+    width calc((5 / 9) * 100%)
+
+.slider 
+    width calc((5 / 9) * 100%)
+    /* height 20em */
+    /* margin-bottom 5em   */
+
+.title-container h1
+    font-size 4em
+    margin-bottom 0
+    text-align left
+    margin-top 0
+    -webkit-text-stroke 1px black
+    -webkit-text-fill-color transparent
     
-}
-.title-shadow {
-    position: absolute;
-    padding: 3px;
-    opacity: 0.3;
-}
-h4 {
-  text-align: left;
-}
-.copy {
-  width: 50%;
-}
+.title-shadow 
+    position absolute
+    padding 3px
+    opacity 0.3
+
+h4 
+  text-align left
+
+.copy 
+  width 50%
+
 </style>

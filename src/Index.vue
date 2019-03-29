@@ -1,6 +1,6 @@
 <template>
-  <div id="index">
-    <div class="preloader" v-if="!preloader"><p class="loading">LOADING LOADING LOADING. preloader goes here. it will be something rad. but until then, it's this random screen</p></div>
+  <div id="index" :class="[!preloader ? 'can-scroll' : false]">
+    <div class="preloader" v-if="preloader" ><p class="loading">LOADING LOADING LOADING. preloader goes here. it will be something rad. but until then, it's this random screen</p></div>
     <Background/>
     
       <router-view/>
@@ -34,8 +34,11 @@ export default {
 #index {
   /* background:white; */
   height: 100vh;
-  position: absolute;
+  position: fixed;
 }
+.can-scroll {
+  position: relative !important;
+  }
 .preloader {
   position: absolute;
   z-index:100;

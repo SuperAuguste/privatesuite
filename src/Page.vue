@@ -33,9 +33,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
 
-#app {
+#app 
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,8 +45,9 @@ export default {
   /* border: 3px solid black; */
   width: 67vw;
   /* background: rgba(255, 255, 255, 0.521); */
-  
-}
+  below($tablet)
+    width 100vw
+
 .background-lines-container {
   display: flex;
   width: 100%;

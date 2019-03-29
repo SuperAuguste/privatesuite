@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Page from './Page.vue'
 import About from './Pages/About.vue'
+import IssuePage from './Pages/IssuePage.vue'
+import Contact from './Pages/Contact.vue'
 import PostPage from './Pages/PostPage.vue'
 // import FictionPage from './Pages/FictionPage.vue'
 // import NewsPage from './Pages/NewsPage.vue'
@@ -38,6 +40,29 @@ export default new VueRouter( {
           name: 'About',
           component: About
         },
+
+        {
+          path: 'credits',
+          name: 'Credits',
+          component: Credits
+        },
+        {
+          path: 'contact',
+          name: 'Contact',
+          component: Contact
+        },
+        {
+          path: 'issues',
+          name: 'IssuePage',
+          component: IssuePage,
+          children: [
+            {
+              path: ':slug',
+              name: 'IssuePage',
+              component: IssuePage,
+            }
+          ]
+        },
         {
           path: ':slug',
           name: 'PostPage',
@@ -50,11 +75,6 @@ export default new VueRouter( {
             }
           ]
 
-        },
-        {
-          path: 'credits',
-          name: 'Credits',
-          component: Credits
         }
       ]
     },

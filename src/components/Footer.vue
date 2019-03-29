@@ -39,9 +39,9 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style lang="stylus" scoped>
 
-@import "../stylesheets/styles.css";
+@import "../stylesheets/styles.styl";
 
 .social-icons {
   display: flex;

@@ -41,8 +41,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus" scoped>
 
-@import "../stylesheets/styles.css";
+@import "../stylesheets/styles.styl";
 
 </style>

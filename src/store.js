@@ -18,7 +18,7 @@ export default new Vuex.Store({
     links: [],
     linkChildren: [],
     postBody: '**',
-    preloader: false,
+    preloader: true,
     footer: '',
     credits:''
     },
@@ -62,6 +62,7 @@ export default new Vuex.Store({
   },
   actions: {
     async loadData({ commit }, resolve) {
+      
 //title of magazine
      await axios.get(api).then((response) => {
         this.title = response.data.name;
@@ -112,9 +113,13 @@ export default new Vuex.Store({
         
         commit('updateAbout', this.about);
       });
+      await axios.get(api + 'wp/v2/pages/?slug=credits').then((response) => {
+        this.credits = response.data[0].acf.credits;
+        console.log(this.credits);
+        commit('updateCredits', this.credits);
+      });
 
-
-      this.preloader = true;
+      this.preloader = false;
       commit('updatePreloader', this.preloader);
 
     }

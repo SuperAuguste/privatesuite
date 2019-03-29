@@ -11,21 +11,21 @@
             <!-- The links -->
 
             <div class="menu-links-wrap">
-            <div class="menu-links">
-          
-                
-                <div class="links" v-for="(item, i) in this.links" :key="i">
-                  <a class="dropdown" @click.prevent="toggleDropdown()" :href="item.url" v-if="item.title == 'Issues'" v-html="item.title" target="_blank"/>
-                  <a :href="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" />
-                </div>
+
+                <div class="menu-links">
+                      <div class="links" v-for="(item, i) in this.links" :key="i">
+                        <a class="dropdown" @click.prevent="toggleDropdown()" :href="item.url" v-if="item.title == 'Issues'" v-html="item.title" target="_blank"/>
+                        <a :href="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" />
+                      </div>
+                  </div>
+              
+                  <div class="children-links-container" v-if="showDropdown == true">
+                      <div class="children-links" v-for="(item, i) in this.linkChildren" :key="i" >
+                        <a :href="`/issues/${item.object_slug}`" v-html="item.title"/>
+                    </div>
+                  </div>
+
             </div>
-            
-                <div class="children-links-container" v-if="showDropdown == true">
-                  <div class="children-links" v-for="(item, i) in this.linkChildren" :key="i" >
-                    <a :href="item.url" v-html="item.title" target="_blank"/>
-                </div>
-                </div>
-         </div>
          </div>
       </div>
 </template>
@@ -55,10 +55,6 @@ export default {
   computeDropdownSize(length) {
       return length = 100 / length;
     },
-
-  reloadPage() {
-this.$router.go();
-  }
   },
   mounted() {
   },
@@ -70,9 +66,9 @@ this.$router.go();
 }
 </script>
 
-<style  scoped>
+<style scoped>
 
-@import "../stylesheets/styles.css";
+@import "../stylesheets/styles.styl";
 .title {
   /* position:fixed; */
 
@@ -86,14 +82,14 @@ this.$router.go();
               -webkit-text-stroke: 1px black;
     -webkit-text-fill-color: transparent;
       line-height: 1em;
-      padding-top: 1em;
+      padding-top: .25em;
 }
 .title .fill{
   margin: 0;
   font-size:8em;
   text-align: left;
   line-height: 1em;
-  padding-top: 1em;
+  padding-top: .25em;
   color: lightblue;
   position: absolute;
   top: 5px;

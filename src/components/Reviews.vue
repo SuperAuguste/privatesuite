@@ -10,7 +10,7 @@
                 </div> -->
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
-                      <div class="slider" v-if="idx.link.includes('reviews')">
+                      <div class="slider" v-if="sortedPosts(idx.link)">
                         <div class="image"/>
                           <a :href="idx.link.replace('https://privatesuitemag.com', '')">
 
@@ -42,6 +42,13 @@ export default {
       return {
       }
   },
+    methods: {
+    sortedPosts(link) {
+      if (link.toString().includes('reviews')) {
+        return true;
+      }
+    }
+  },
   //grabbing the values from wordpress, and assigning them to the variables
   computed: mapState ([
     'postBody'
@@ -49,9 +56,9 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style lang="stylus" scoped>
 
-@import "../stylesheets/styles.css";
+@import "../stylesheets/styles.styl";
 .post-title-wrap {
     display: flex;
     flex-wrap: wrap;
