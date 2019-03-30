@@ -5,6 +5,7 @@ import About from './Pages/About.vue'
 import IssuePage from './Pages/IssuePage.vue'
 import Contact from './Pages/Contact.vue'
 import PostPage from './Pages/PostPage.vue'
+
 // import FictionPage from './Pages/FictionPage.vue'
 // import NewsPage from './Pages/NewsPage.vue'
 // import ReviewsPage from './Pages/ReviewsPage.vue'
@@ -55,13 +56,19 @@ export default new VueRouter( {
           path: 'issues',
           name: 'IssuePage',
           component: IssuePage,
-          children: [
-            {
-              path: ':slug',
-              name: 'IssuePage',
-              component: IssuePage,
-            }
-          ]
+          // children: [
+          //   {
+          //     path: ':slug',
+          //     name: 'IssuePage',
+          //     component: IssuePage,
+              
+          //   }
+          // ]
+        },
+        {
+          path: 'issues/:slug',
+          name: 'IssuePage',
+          component: IssuePage,
         },
         {
           path: ':slug',

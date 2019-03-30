@@ -4,6 +4,7 @@
 <Fiction/>
 <News/>
 <Reviews/>
+<Features/>
 
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
   </div>

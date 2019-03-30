@@ -3,8 +3,8 @@
           <div class="menu">
             <!-- The title -->
             <div class="title">
-           <h1 class="outline"><router-link to="/">{{title}}</router-link></h1>
-           <h1 class="fill">{{title}}</h1>
+           <div class="outline"><router-link to="/">{{title}}</router-link></div>
+           <div class="fill">{{title}}</div>
 
 
            </div>
@@ -15,8 +15,12 @@
                 <div class="menu-links">
                       <div class="links" v-for="(item, i) in this.links" :key="i">
                         <a class="dropdown" @click.prevent="toggleDropdown()" :href="item.url" v-if="item.title == 'Issues'" v-html="item.title" target="_blank"/>
-                        <a :href="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" />
+                        <!-- <a :href="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" /> -->
+                        <router-link :to="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" />
+
                       </div>
+                        <a href="https://www.patreon.com/privatesuitemag" target="_blank">Subscribe</a>
+
                   </div>
               
                   <div class="children-links-container" v-if="showDropdown == true">
@@ -77,16 +81,18 @@ export default {
 }
 .title .outline{
   margin: 0;
-  font-size:8em;
+  font-size:6em;
   text-align: left;
               -webkit-text-stroke: 1px black;
     -webkit-text-fill-color: transparent;
       line-height: 1em;
       padding-top: .25em;
+  border-bottom: 1px black solid;
+    
 }
 .title .fill{
   margin: 0;
-  font-size:8em;
+  font-size:6em;
   text-align: left;
   line-height: 1em;
   padding-top: .25em;
@@ -127,16 +133,20 @@ a {
 }
 .children-links-container {
   padding-top: 1em;
+  border-top: 1px black solid;
   position: absolute;
   width: 100%;
 }
 .children-links {
   display: block;
   text-align: center;
+  padding: .5em 0;
 }
-h1 {
-  font-size: 5em;
+.title {
+  font-size: 1em;
   position: relative;
   margin-bottom: 5px;
+  font-family: 'Campton Bold Italic';
+  text-transform: uppercase;
 }
 </style>

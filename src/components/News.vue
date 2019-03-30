@@ -5,15 +5,16 @@
           
  <div class="news">
             
-                <!-- <div class="title-container">
+                <div class="title-container" v-if="!this.$route.params.slug">
                     <h1 class="title-shadow">News</h1>
                     <h1 class="title">News</h1>
-                </div> -->
+                </div>
                 <div class="post-title-wrap">
+                   <div class="image"/>
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
                       <div class="slider" v-if="sortedPosts(idx.link)">
-                        <div class="image"/>
-                          <a :href:to="idx.link.replace('https://privatesuitemag.com', '')">
+                       
+                          <a :href="idx.link.replace('https://privatesuitemag.com', '')">
                         <div class="copy">
                           <h4 v-html="idx.title.rendered"/>
                           <p v-html="idx.content.rendered.slice(0,150) + '...'"/>
@@ -62,17 +63,16 @@ export default {
 
 @import "../stylesheets/styles.styl"
 .post-title-wrap 
-    display flex
-    flex-wrap wrap
+    // display flex
+    // flex-wrap wrap
     margin auto
 
 .post-wrapnth-child(even) > .slider
       width calc((2 / 9) * 100%)
 
 .image 
-    height 100%
-    position relative
-    width 100%
+    height 15em
+    width 5em
     background-color pink
     opacity .5
     width calc((5 / 9) * 100%)
@@ -80,7 +80,7 @@ export default {
 .slider 
     width calc((5 / 9) * 100%)
     /* height 20em */
-    /* margin-bottom 5em   */
+    margin-bottom 5em   
 
 .title-container h1
     font-size 4em

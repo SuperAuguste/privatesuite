@@ -2,10 +2,12 @@
   <div id="app">
     <div id="nav">
       <MainNav/>
-      
+    <Background :mouseX="this.mouseX" :mouseY="this.mouseY" class="background"/>
+
+<!--       
       <div class="background-lines-container">
         <div class="background-lines" v-for="i in 11" :key="i"> &nbsp;</div>
-        </div>
+        </div> -->
 <router-view/>
    <Footer class="footer"/>
       <!-- <News/> -->
@@ -17,16 +19,34 @@
 
 import MainNav from '@/components/MainNav.vue'
 import Footer from '@/components/Footer.vue'
+import Background from '@/Background.vue'
 
 export default {
   name: 'Page',
   components: {
     MainNav,
     Footer,
+    Background  
+
+  },
+  methods: {
+    mouse() {
+      this.window = document.getElementById('app');
+      console.log(this.window);
+      this.window.addEventListener('mouseover', (e) => {
+        this.mouseX = e.clientX;
+        this.mouseY = e.clientY;
+
+      });
+    }
+  },
+  mounted() {
+   this.mouse();
   },
   data () {
     return {
-      
+      mouseX: 0,
+      mouseY: 0
     }
   }
  
@@ -44,6 +64,7 @@ export default {
   padding: 0 calc((100vw / 11) - 7px);
   /* border: 3px solid black; */
   width: 67vw;
+  position absolute
   /* background: rgba(255, 255, 255, 0.521); */
   below($tablet)
     width 100vw
@@ -74,7 +95,13 @@ export default {
   font-weight: bold;
   color: #2c3e50;
 }
-
+.background {
+  position: absolute;
+  width:100vw;
+  height:100vh;
+  z-index:-3;
+  // z-index:1000;
+}
 /* .footer {
   position: absolute;
   width: 100%;

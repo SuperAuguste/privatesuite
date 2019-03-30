@@ -47,9 +47,9 @@ export default {
 @import "../stylesheets/styles.styl";
 #about {
   width: calc(5/9 * 100%);
-  padding: 4em calc(1/9 * 100%);
+  // padding: 4em calc(1/9 * 100%);
 }
-p {
-  font-size: 1.5em;
+/deep/ p {
+  font-size: 1em;
 }
 </style>

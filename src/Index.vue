@@ -1,7 +1,7 @@
 <template>
+
   <div id="index" :class="[!preloader ? 'can-scroll' : false]">
     <div class="preloader" v-if="preloader" ><p class="loading">LOADING LOADING LOADING. preloader goes here. it will be something rad. but until then, it's this random screen</p></div>
-    <Background/>
     
       <router-view/>
     
@@ -9,18 +9,24 @@
 </template>
 
 <script>
-import Background from '@/Background.vue'
 import { mapState } from 'vuex' 
+const THREE = global.THREE = require('three');
 
 
 export default {
   name: 'Index',
   components: {
-    Background  
   },
-  mounted() {
+  beforeCreate() {
   // console.log(this.$http);
     this.$store.dispatch('loadData');
+  },
+  methods: {
+     
+  },
+  mounted() {
+
+
   },
     computed: mapState ([
       'preloader'
@@ -35,6 +41,7 @@ export default {
   /* background:white; */
   height: 100vh;
   position: fixed;
+  z-index:10;
 }
 .can-scroll {
   position: relative !important;
@@ -57,4 +64,5 @@ export default {
   z-index:101;
   margin:auto;
 }
+
 </style>

@@ -5,11 +5,10 @@
           
 
             <div class="fiction">
-                <!-- <div class="title-container">
+                <div class="title-container"  v-if="!this.$route.params.slug">
                     <h1 class="title-shadow">Fiction</h1>
                     <h1 class="title">Fiction</h1>
-                </div> -->
-                  <!-- {{postBody}} -->
+                </div>
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
 
@@ -88,6 +87,8 @@ export default {
 }
 .slider {
     width: calc((3 / 9) * 100%);
+    margin-bottom: 5em;
+
 }
 .news .slider {
     width: calc((5 / 9) * 100%);

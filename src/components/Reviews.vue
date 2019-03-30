@@ -4,10 +4,10 @@
 
           
             <div class="reviews">
-                <!-- <div class="title-container">
+                <div class="title-container"  v-if="!this.$route.params.slug">
                     <h1 class="title-shadow">Reviews</h1>
                     <h1 class="title">Reviews</h1>
-                </div> -->
+                </div>
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
                       <div class="slider" v-if="sortedPosts(idx.link)">

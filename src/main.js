@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 
 
 //ask Vue to process these items
+
 new Vue({
   el: '#app',
   router,

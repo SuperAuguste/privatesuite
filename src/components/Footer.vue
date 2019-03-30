@@ -7,7 +7,7 @@
               </div>
             <div class="body">
                 <p>{{footer.footer_text}}</p>
-                <!-- <h3> <a :href="['mailto:' + footer.email.title]" v-html="footer.email.title"/></h3> -->
+                <h3> <a :href="['mailto:' + footer.email.title]" v-html="footer.email.title"/></h3>
                 <div class="social-icons">
                   <div class="social-icon" v-for="(item, idx) in this.footer.social_links" :key="idx">
                     <a :href="item.social_link.url" target="_blank"><img :src="item.social_media.url"/></a>
@@ -48,8 +48,8 @@ export default {
   width: 50%;
 }
  .social-icon {
-display: flex;
-margin-right: auto;
+  display: flex;
+  margin-right: auto;
   }
 .body {
   width: calc(3 / 9 * 100%);
@@ -71,6 +71,6 @@ h3 {
   display: flex;
 }
 .footer {
-  padding-top: 5em;
+  padding: 5em 0 3em 0;
 }
 </style>

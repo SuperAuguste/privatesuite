@@ -2,14 +2,17 @@
     <div class="slice">
         <div class="post-wrap">
             <div class="features">
-                 <!-- <div class="title-container">
+
+                 <div class="title-container"  v-if="!this.$route.params.slug">
                     <h1 class="title-shadow">Features</h1>
                     <h1 class="title">Features</h1>
-                </div> -->
+                </div>
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
+                      
                        <div class="slider" v-if="sortedPosts(idx.link)">
                          <div class="image"/>
+
                           <a :href="idx.link.replace('https://privatesuitemag.com', '')">
 
                          <div class="copy">
@@ -55,26 +58,24 @@ export default {
 
 @import "../stylesheets/styles.styl";
 .post-title-wrap {
-    display: flex;
-    flex-wrap: wrap;
     margin: auto;
+    display:flex;
 }
 .post-wrap:nth-child(even) > .slider{
       width: calc((2 / 9) * 100%);
 }
 .image {
-  height: 100%;
+  height: 10em;
   position: relative;
-  width: 100%;
+  width: 10em;
   background-color: white;
   opacity: 0.5;
   width: calc((2 / 3) * 100%);
 }
-.reviews, .features {
-    padding: 3em 0;
-}
 .slider {
     width: calc((3 / 9) * 100%);
+    margin-bottom: 5em;
+    
 }
 .news .slider {
     width: calc((5 / 9) * 100%);

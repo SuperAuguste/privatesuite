@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
-
+import stylus from "stylus"
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 //Telling Vue to use these imported resources
-Vue.use(VueResource, VueAxios, axios);
+Vue.use(VueResource, VueAxios, axios, stylus);
 Vue.use( Vuex);
 
 Vue.http.options.root = 'https://privatesuitemag.com/wp-json/'
@@ -20,7 +20,8 @@ export default new Vuex.Store({
     postBody: '**',
     preloader: true,
     footer: '',
-    credits:''
+    credits:'',
+    contact: ''
     },
 
 
@@ -55,6 +56,9 @@ export default new Vuex.Store({
     },
     updateCredits(state, credits ) {
       Vue.set(state, 'credits', credits);
+    },
+    updateContact(state, contact ) {
+      Vue.set(state, 'contact', contact);
     }
   
   },
@@ -108,15 +112,17 @@ export default new Vuex.Store({
         commit('updateAbout', this.about);
       });
       //credits
-      await axios.get(api + 'wp/v2/pages/167').then((response) => {
-        this.about = response.data;
-        
-        commit('updateAbout', this.about);
-      });
       await axios.get(api + 'wp/v2/pages/?slug=credits').then((response) => {
         this.credits = response.data[0].acf.credits;
         console.log(this.credits);
         commit('updateCredits', this.credits);
+      });
+
+      //contact
+      await axios.get(api + 'wp/v2/pages/?slug=contact').then((response) => {
+        this.contact = response.data;
+        console.log(this.contact[0].content.rendered);
+        commit('updateContact', this.contact);
       });
 
       this.preloader = false;
