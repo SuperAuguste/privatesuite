@@ -9,13 +9,14 @@
                     <h1 class="title-shadow">Fiction</h1>
                     <h1 class="title">Fiction</h1>
                 </div>
+                
                 <div class="post-title-wrap">
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
 
                         <div class="slider" v-if="sortedPosts(idx.link)">
 
                           <div class="image"/>
-                <a :href="idx.link.replace('https://privatesuitemag.com', '')">
+                          <a :href="idx.link.replace('https://privatesuitemag.com', '')">
 
                           <div class="copy">
                             <h4 v-html="idx.title.rendered"/>
