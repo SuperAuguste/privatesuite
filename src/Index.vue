@@ -1,17 +1,17 @@
 <template>
 
-  <div id="index" :class="[!preloader ? 'can-scroll' : false]">
-    <div class="preloader" v-if="preloader" ><p class="loading">LOADING LOADING LOADING. preloader goes here. it will be something rad. but until then, it's this random screen</p></div>
-    
-      <router-view/>
-    
+  <div id="index" ref="index" :class="[!preloader ? 'can-scroll' : false]">
+
+    <div class="preloader" v-if="preloader"><p class="loading">Loading</p></div>
+
+      <router-view class="router"/>
+
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex' 
-const THREE = global.THREE = require('three');
-
+import TweenLite from "gsap/TweenLite";
 
 export default {
   name: 'Index',
@@ -21,12 +21,16 @@ export default {
   // console.log(this.$http);
     this.$store.dispatch('loadData');
   },
-  methods: {
-     
+  data() {
+    return {
+     killPreloader: false,
+     invisible: '',
+     nodisplay:''
+    }
+  },
+  methods: { 
   },
   mounted() {
-
-
   },
     computed: mapState ([
       'preloader'
@@ -44,12 +48,12 @@ export default {
   z-index:10;
 }
 .can-scroll {
-  position: relative !important;
+    position: relative !important;
   }
 .preloader {
-  position: absolute;
+  position: fixed;
   z-index:100;
-  width: 200vh;
+  width: 101vw;
   overflow: hidden;
   display:flex;
   margin:auto;
@@ -57,6 +61,9 @@ export default {
   left: -1vh;
   height: 101vh;
   background: white;
+  display: 1;
+  transition: opacity 1s linear;
+
 }
 .loading {
   color:black;

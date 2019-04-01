@@ -87,10 +87,14 @@ export default {
     padding: 3em 0;
 }
 .slider {
-    width: calc((3 / 9) * 100%);
+    width: 50%;
     margin-bottom: 5em;
-
 }
+@media screen and (max-width:768px) {
+  .slider {
+    width: 100%;
+}
+  }
 .news .slider {
     width: calc((5 / 9) * 100%);
 }

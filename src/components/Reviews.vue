@@ -107,4 +107,7 @@ h4 {
 .copy {
   margin-left: calc(((1 / 9) * 100%) * 3);
 }
+@media screen and (max-width:768px)
+  .slider
+    width 100%
 </style>

@@ -2,12 +2,7 @@
   <div class="main-nav">
           <div class="menu">
             <!-- The title -->
-            <div class="title">
-           <div class="outline"><router-link to="/">{{title}}</router-link></div>
-           <div class="fill">{{title}}</div>
-
-
-           </div>
+          
             <!-- The links -->
 
             <div class="menu-links-wrap">
@@ -79,29 +74,11 @@ export default {
     /* white-space: nowrap; */
     padding-bottom: 4em;
 }
-.title .outline{
-  margin: 0;
-  font-size:6em;
-  text-align: left;
-              -webkit-text-stroke: 1px black;
-    -webkit-text-fill-color: transparent;
-      line-height: 1em;
-      padding-top: .25em;
-  border-bottom: 1px black solid;
-    
+.main-nav {
+  background: white;
 }
-.title .fill{
-  margin: 0;
-  font-size:6em;
-  text-align: left;
-  line-height: 1em;
-  padding-top: .25em;
-  color: lightblue;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  z-index:-1;
-}
+
+
 .menu {
   position: relative;
   width: 100%;
@@ -111,8 +88,14 @@ export default {
     right: 2em;
     top: 2em;
   font-family: 'TSTAR Mono Round';
-  /* margin: 2em 0px; */
 }
+  @media screen and (max-width:768px) {
+   .menu-links-wrap {
+     position:absolute;
+   }
+    
+  }
+
 .menu-links{
      text-align: right;
   /* position:absolute; */
@@ -142,11 +125,6 @@ a {
   text-align: center;
   padding: .5em 0;
 }
-.title {
-  font-size: 1em;
-  position: relative;
-  margin-bottom: 5px;
-  font-family: 'Campton Bold Italic';
-  text-transform: uppercase;
-}
+
+
 </style>

@@ -81,6 +81,8 @@ export default {
     width calc((5 / 9) * 100%)
     /* height 20em */
     margin-bottom 5em   
+  
+
 
 .title-container h1
     font-size 4em
@@ -98,7 +100,9 @@ export default {
 h4 
   text-align left
 
-.copy 
-  width 50%
+
+@media screen and (max-width:768px)
+  .slider,.image
+    width 100%
 
 </style>

@@ -60,6 +60,10 @@ export default {
 .post-title-wrap {
     margin: auto;
     display:flex;
+    @media screen and (max-width:768px) {
+      flex-direction:column;
+
+      }
 }
 .post-wrap:nth-child(even) > .slider{
       width: calc((2 / 9) * 100%);
@@ -111,4 +115,8 @@ h4 {
 .copy {
   margin-right: calc(((1 / 9) * 100%) * 3);
 }
+@media screen and (max-width:768px)
+  .slider, .copy, .image
+    width 100%
+    margin 0
 </style>

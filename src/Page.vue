@@ -1,16 +1,29 @@
 <template>
   <div id="app">
     <div id="nav">
-      <MainNav/>
+
+      <div class="nav-switch-space" v-if="this.isMobile">
+        <div class="nav-switch" :class="this.opened ? 'open' : false"/>
+               <div class="dropdown" @click="toggleDropDown()">
+               <svg xmlns="http://www.w3.org/2000/svg" :class="this.opened ? 'open' : false" viewBox="0 0 165.33 185.63"><path d="M82.67,185.63,0,103,22.63,80.33l43.54,43.54V0h32V124.87l44.54-44.54L165.33,103ZM1.41,103l81.26,81.25L163.92,103,142.71,81.75,97.17,127.29V1h-30V126.29L22.63,81.75Z"/></svg>
+              </div>
+       <MainNav class="main-nav-mobile" v-if="this.opened"/>
+
+       </div>
+
+
+
+        <div class="title">
+           <div class="outline"><router-link to="/">{{title}}</router-link></div>
+           <div class="fill">{{title}}</div>
+
+
+           </div>
+      <MainNav class="main-nav" v-if="!this.isMobile"/>
     <Background :mouseX="this.mouseX" :mouseY="this.mouseY" class="background"/>
 
-<!--       
-      <div class="background-lines-container">
-        <div class="background-lines" v-for="i in 11" :key="i"> &nbsp;</div>
-        </div> -->
 <router-view/>
    <Footer class="footer"/>
-      <!-- <News/> -->
     </div>
   </div>
 </template>
@@ -20,13 +33,15 @@
 import MainNav from '@/components/MainNav.vue'
 import Footer from '@/components/Footer.vue'
 import Background from '@/Background.vue'
+import { mapState } from 'vuex'
+
 
 export default {
   name: 'Page',
   components: {
     MainNav,
     Footer,
-    Background  
+    Background
 
   },
   methods: {
@@ -38,15 +53,41 @@ export default {
         this.mouseY = e.clientY;
 
       });
+    },
+    toggleDropDown() {
+      this.opened = !this.opened;
+      console.log('clicked');
+    },
+    showDropdown() {
+              if (window.innerWidth < 768) {
+          this.isMobile = true;
+        } else {
+          this.isMobile = false;
+
+        }
+      window.addEventListener(('resize'), e => {
+        if (window.innerWidth < 768) {
+          this.isMobile = true;
+        } else {
+          this.isMobile = false;
+
+        }
+      });
     }
   },
   mounted() {
    this.mouse();
+   this.showDropdown();
   },
+    computed: mapState ([
+      'title'
+    ]),
   data () {
     return {
       mouseX: 0,
-      mouseY: 0
+      mouseY: 0,
+      isMobile:false,
+      opened:false
     }
   }
  
@@ -63,7 +104,7 @@ export default {
   color: #2c3e50;
   padding: 0 calc((100vw / 11) - 7px);
   /* border: 3px solid black; */
-  width: 67vw;
+  width: calc(90vw - calc((100vw / 11) - 7px));
   position absolute
   /* background: rgba(255, 255, 255, 0.521); */
   below($tablet)
@@ -108,4 +149,71 @@ export default {
   top: 0;
   margin-top: 60vh;
 } */
+.title .outline{
+  margin: 0;
+  text-align: left;
+              -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: transparent;
+      line-height: 1em;
+      padding-top: .25em;
+  border-bottom: 1px black solid;
+    
+}
+.outline, .fill{
+  font-size:15vw;
+  }
+.title {
+  font-size: 1em;
+  position: relative;
+  margin-bottom: 5px;
+  font-family: 'Campton Bold Italic';
+  text-transform: uppercase;
+}
+.title .fill{
+  margin: 0;
+  text-align: left;
+  line-height: 1em;
+  padding-top: .25em;
+  color: lightblue;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index:-1;
+}
+.main-nav {
+  z-index: 5;
+
+  }
+.nav-switch-space, .nav-switch {
+  height: 5em;
+    background-color: pink;
+  }
+.nav-switch {
+  position:absolute;
+
+  top: -5em;
+  left: -100vw;
+  width: 200vh;
+  z-index:5;
+  height: 10em;
+  transition: height 1s ease;
+    &.open {
+      height:140vh;
+      }
+  }
+svg {
+  width: 4em;
+  position: relative;
+  top: 0;
+  z-index:6;
+  transition transform 0.5s ease;
+  &.open {
+    transform: rotateZ(180deg);
+    }
+  }
+  .dropdown {
+    position:relative;
+    width:95%;
+    cursor:pointer;
+    }
 </style>

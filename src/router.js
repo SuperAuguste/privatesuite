@@ -6,6 +6,7 @@ import IssuePage from './Pages/IssuePage.vue'
 import Contact from './Pages/Contact.vue'
 import PostPage from './Pages/PostPage.vue'
 
+
 // import FictionPage from './Pages/FictionPage.vue'
 // import NewsPage from './Pages/NewsPage.vue'
 // import ReviewsPage from './Pages/ReviewsPage.vue'
