@@ -14,8 +14,6 @@ yarn add vuex -g --save
 
 ### Compiles and hot-reloads for development
 ```cmd
-SET STYLUS_COV=false
-
 yarn run serve
 ```
 
