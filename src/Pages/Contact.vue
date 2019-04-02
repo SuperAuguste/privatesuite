@@ -3,7 +3,7 @@
         <div id="nav">
 
         <!-- Change this name to exactly the name of the page (i.e. about, issue, features) -->
-            <div id="nameofPage">
+            <div id="contact">
 
                 <!-- Outlined Heading -->
                 <div class="title-container">
@@ -42,5 +42,6 @@ export default {
 <style lang="stylus" scoped>
 
 @import "../stylesheets/styles.styl";
-
+#contact
+  padding-top 5em
 </style>

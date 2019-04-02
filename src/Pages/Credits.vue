@@ -59,6 +59,7 @@ export default {
 @import "../stylesheets/styles.styl";
 #credits 
   text-align left
+  padding-top 5em
 
 .the-credits 
   display flex

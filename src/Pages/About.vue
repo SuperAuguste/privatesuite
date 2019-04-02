@@ -45,10 +45,13 @@ export default {
 <style lang="stylus" scoped>
 
 @import "../stylesheets/styles.styl";
-#about {
+#about 
   width: calc(5/9 * 100%);
+  padding-top: 5em;
   // padding: 4em calc(1/9 * 100%);
-}
+  @media screen and (max-width:768px)
+    width 100%
+
 /deep/ p {
   font-size: 1em;
 }
