@@ -69,7 +69,7 @@ h2 {
   text-align: left;
   margin-top: 0;
   @media screen and (max-width:768px) {
-    font-size: 12vw;
+    font-size: 10vw;
       }
 }
 h3 {
