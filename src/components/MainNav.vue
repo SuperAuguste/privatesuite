@@ -9,16 +9,15 @@
 
                 <div class="menu-links">
                       <div class="links" v-for="(item, i) in this.links" :key="i">
-                        <a class="dropdown" @click.prevent="toggleDropdown()" :href="item.url" v-if="item.title == 'Issues'" v-html="item.title" target="_blank"/>
-                        <!-- <a :href="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" /> -->
-                        <router-link :to="item.url.replace('https://privatesuitemag.com', '')" v-if="item.title != 'Issues'" v-html="item.title" />
+                        <a class="dropdown" @click.prevent="toggleIssues()" :href="item.url" v-if="item.title == 'Issues'" v-html="item.title" target="_blank"/>
+                      <div @click.prevent="toggleDropdown()">  <router-link :to="item.url.replace('https://privatesuitemag.com', '')"  v-if="item.title != 'Issues'" v-html="item.title" /></div>
 
                       </div>
                         <a href="https://www.patreon.com/privatesuitemag" target="_blank">Subscribe</a>
 
                   </div>
               
-                  <div class="children-links-container" v-if="showDropdown == true">
+                  <div class="children-links-container" v-if="showIssues == true">
                       <div class="children-links" v-for="(item, i) in this.linkChildren" :key="i" >
                         <a :href="`/issues/${item.object_slug}`" v-html="item.title"/>
                     </div>
@@ -37,20 +36,26 @@ export default {
   name: 'MainNav',
 
   data() {
-    let showDropdown = false
-  
+    let showIssues = false
+
       return {
-        showDropdown
+        showIssues,
+        opened: true
       }
   },
   // grabbing the values from wordpress, and assigning them to the variables
   methods: {
     
-  toggleDropdown() {
-      this.showDropdown = !this.showDropdown;
-      return this.showDropdown;
+  toggleIssues() {
+      this.showIssues = !this.showIssues;
+      return this.showIssues;
     },
-
+toggleDropdown() {
+  if (this.dropdown) {
+    this.opened = !this.opened;
+      this.$store.commit('updateDropdown', this.opened);
+  }
+},
   computeDropdownSize(length) {
       return length = 100 / length;
     },
@@ -60,7 +65,8 @@ export default {
   computed: mapState ([
       'title',
       'links',
-      'linkChildren'
+      'linkChildren',
+      'dropdown'
     ])
 }
 </script>

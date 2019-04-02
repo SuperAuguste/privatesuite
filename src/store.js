@@ -21,11 +21,9 @@ export default new Vuex.Store({
     preloader: true,
     footer: '',
     credits:'',
-    contact: ''
+    contact: '',
+    dropdown: false
     },
-
-
-
   getters: {
   },
   mutations: {
@@ -59,6 +57,9 @@ export default new Vuex.Store({
     },
     updateContact(state, contact ) {
       Vue.set(state, 'contact', contact);
+    },
+    updateDropdown(state, dropdown) {
+      Vue.set(state, 'dropdown', dropdown);
     }
   
   },
@@ -74,6 +75,7 @@ export default new Vuex.Store({
         commit('updateTitle', this.title);
 
       });
+      console.log(this.$route);
       //links + dropdown
       await axios.get(api + 'wp-api-menus/v2/menus/29').then((response) => {
         this.links = response.data.items;
@@ -92,13 +94,7 @@ export default new Vuex.Store({
         
         commit('updatePostBody', this.postBody);
       });
-      //post category (CURRENTLY NOT IN USE)
-      await axios.get(api + 'wp/v2/categories').then((response) => {
-        this.postCategory = response.data;
-        
-        commit('updatePostCategory', this.postCategory);
-      });
-//footer
+      //footer
       await axios.get(api + 'acf/v3/options/options').then((response) => {
         this.footer = response.data.acf;
         
@@ -130,5 +126,8 @@ export default new Vuex.Store({
 
     }
 
+  },
+  toggleDropdown() {
+    commit('updateDropdown', this.dropdown);
   }
 })

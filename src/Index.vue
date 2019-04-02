@@ -2,7 +2,7 @@
 
   <div id="index" ref="index" :class="[!preloader ? 'can-scroll' : false]">
 
-    <div class="preloader" v-if="preloader"><p class="loading">Loading</p></div>
+    <div class="preloader" v-if="preloader"><p class="loading">Loading </p></div>
 
       <router-view class="router"/>
 
@@ -20,6 +20,8 @@ export default {
   beforeCreate() {
   // console.log(this.$http);
     this.$store.dispatch('loadData');
+    this.$store.dispatch('toggleDropdown');
+
   },
   data() {
     return {

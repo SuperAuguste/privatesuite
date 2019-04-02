@@ -57,6 +57,7 @@ export default {
   float: right;
    @media screen and (max-width:768px) {
       width: 100%;
+      padding-bottom: 3em;
       }
 }
 .title {

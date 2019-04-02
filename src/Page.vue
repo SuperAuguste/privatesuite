@@ -3,11 +3,11 @@
     <div id="nav">
 
       <div class="nav-switch-space" v-if="this.isMobile">
-        <div class="nav-switch" :class="this.opened ? 'open' : false"/>
+        <div class="nav-switch" :class="dropdown ? 'open' : false"/>
                <div class="dropdown" @click="toggleDropDown()">
-               <svg xmlns="http://www.w3.org/2000/svg" :class="this.opened ? 'open' : false" viewBox="0 0 165.33 185.63"><path d="M82.67,185.63,0,103,22.63,80.33l43.54,43.54V0h32V124.87l44.54-44.54L165.33,103ZM1.41,103l81.26,81.25L163.92,103,142.71,81.75,97.17,127.29V1h-30V126.29L22.63,81.75Z"/></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" :class="dropdown ? 'open' : false" viewBox="0 0 165.33 185.63"><path d="M82.67,185.63,0,103,22.63,80.33l43.54,43.54V0h32V124.87l44.54-44.54L165.33,103ZM1.41,103l81.26,81.25L163.92,103,142.71,81.75,97.17,127.29V1h-30V126.29L22.63,81.75Z"/></svg>
               </div>
-       <MainNav class="main-nav-mobile" v-if="this.opened"/>
+       <MainNav class="main-nav-mobile" v-if="dropdown"/>
 
        </div>
 
@@ -56,7 +56,7 @@ export default {
     },
     toggleDropDown() {
       this.opened = !this.opened;
-      console.log('clicked');
+      this.$store.commit('updateDropdown', this.opened);
     },
     showDropdown() {
               if (window.innerWidth < 768) {
@@ -80,7 +80,8 @@ export default {
    this.showDropdown();
   },
     computed: mapState ([
-      'title'
+      'title',
+      'dropdown'
     ]),
   data () {
     return {
@@ -186,7 +187,7 @@ export default {
   }
 .nav-switch-space, .nav-switch {
   height: 5em;
-    background-color: pink;
+   border-bottom: 1px black solid;
   }
 .nav-switch {
   position:absolute;
@@ -197,6 +198,8 @@ export default {
   z-index:5;
   height: 10em;
   transition: height 1s ease;
+  background: white;
+
     &.open {
       height:140vh;
       }

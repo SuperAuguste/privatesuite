@@ -79,4 +79,6 @@ export default {
 .magazine
   width 80vw
   height 750px
+  @media screen and (max-width:768px)
+    height 400px
 </style>
