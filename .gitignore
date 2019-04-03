@@ -19,3 +19,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+# Build
+dist.zip
+Private Suite.zip
+Private Suite
