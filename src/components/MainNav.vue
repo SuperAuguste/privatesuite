@@ -10,7 +10,7 @@
                 <div class="menu-links">
                       <div class="links" v-for="(item, i) in this.links" :key="i">
                         <a class="dropdown" @click.prevent="toggleIssues()" :href="item.url" v-if="item.title == 'Issues'" v-html="item.title" target="_blank"/>
-                      <div @click.prevent="toggleDropdown()">  <router-link :to="item.url.replace('https://privatesuitemag.com', '')"  v-if="item.title != 'Issues'" v-html="item.title" /></div>
+                      <div @click.prevent="linkToggleDropdown()">  <router-link :to="item.url.replace('https://privatesuitemag.com', '')"  v-if="item.title != 'Issues'" v-html="item.title" /></div>
 
                       </div>
                         <a href="https://www.patreon.com/privatesuitemag" target="_blank">Subscribe</a>
@@ -50,9 +50,9 @@ export default {
       this.showIssues = !this.showIssues;
       return this.showIssues;
     },
-toggleDropdown() {
+linkToggleDropdown() {
   if (this.dropdown) {
-    this.opened = !this.opened;
+      this.opened = !this.opened;
       this.$store.commit('updateDropdown', this.opened);
   }
 },

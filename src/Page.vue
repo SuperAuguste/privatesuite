@@ -78,7 +78,6 @@ export default {
       });
     },
     toggleDropDown() {
-      this.opened = this.dropdown;
       this.opened = !this.opened;
       this.$store.commit('updateDropdown', this.opened);
     },
