@@ -80,10 +80,6 @@ toggleDropdown() {
     /* white-space: nowrap; */
     padding-bottom: 4em;
 }
-.main-nav {
-  background: white;
-}
-
 
 .menu {
   position: relative;
@@ -97,7 +93,9 @@ toggleDropdown() {
 }
   @media screen and (max-width:768px) {
    .menu-links-wrap {
-     position:absolute;
+     position:relative;
+     width:50vw;
+     text-align: center;
    }
     
   }
