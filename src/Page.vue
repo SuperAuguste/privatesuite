@@ -126,7 +126,7 @@ export default {
 
 <style lang="stylus">
 *:not(.main-nav-mobile):not(.nav-switch-space):not(.dropdown){
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
 
 }
 .main-nav-mobile {
