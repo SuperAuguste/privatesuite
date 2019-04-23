@@ -190,7 +190,7 @@ export default {
     
 }
 .outline, .fill{
-  font-size:15vw;
+  font-size:10vw;
   }
 .title {
   font-size: 1em;
