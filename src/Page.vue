@@ -6,9 +6,10 @@
 
       <div class="nav-switch-space" v-if="this.isMobile">
         <div class="nav-switch" :class="dropdown ? 'open' : false"/>
-               <div class="dropdown" @click="toggleDropDown()">
-               <svg xmlns="http://www.w3.org/2000/svg" :class="dropdown ? 'open' : false" viewBox="0 0 165.33 185.63"><path d="M82.67,185.63,0,103,22.63,80.33l43.54,43.54V0h32V124.87l44.54-44.54L165.33,103ZM1.41,103l81.26,81.25L163.92,103,142.71,81.75,97.17,127.29V1h-30V126.29L22.63,81.75Z"/></svg>
+		 <svg xmlns="http://www.w3.org/2000/svg" @click="toggleDropDown()" :class="dropdown ? 'open' : false" viewBox="0 0 165.33 185.63"><path d="M82.67,185.63,0,103,22.63,80.33l43.54,43.54V0h32V124.87l44.54-44.54L165.33,103ZM1.41,103l81.26,81.25L163.92,103,142.71,81.75,97.17,127.29V1h-30V126.29L22.63,81.75Z"/></svg>
        <MainNav class="main-nav-mobile" v-if="dropdown"/>
+               <div class="dropdown" >
+              
              
               </div>
 
@@ -54,6 +55,13 @@ export default {
     },
     smoothScroll() {
       this.app.addEventListener(('wheel'), e => {
+
+		  if (navigator.userAgent.includes('Firefox')) {
+
+			  e.deltaY *= 500;
+
+		  }
+
         console.log(e.deltaY);
         this.offset = this.app.getBoundingClientRect().height - window.innerHeight;
 
@@ -67,7 +75,13 @@ export default {
           this.app.style = `transform: translateY(-${this.scrollAmt}px);`;
         }
 
-      });
+	  });
+	  
+	//   this.app.addEventListener(('touchmove'), e => {
+		 
+	// 	 console.log(e.scrollTop);
+		 
+	//   });
     },
     mouse() {
       this.app = document.querySelector('.container');
