@@ -56,6 +56,7 @@ export default {
             this.title = response.body[0].title.rendered;
 
          }).catch((e) => {
+			 // Haha
              console.log('noooo');
          });
     },

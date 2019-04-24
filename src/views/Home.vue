@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <router-view/>
+<HomePagePreview/>
 <Fiction/>
 <News/>
 <Reviews/>
@@ -17,7 +18,7 @@ import Features from '@/components/Features.vue'
 import Fiction from '@/components/Fiction.vue'
 import News from '@/components/News.vue'
 import Reviews from '@/components/Reviews.vue'
-
+import HomePagePreview from '@/components/HomePagePreview.vue'
 
 
 export default {
@@ -27,7 +28,8 @@ export default {
     Features,
     Fiction,
     News,
-    Reviews
+	Reviews,
+	HomePagePreview
   }
 }
 </script>

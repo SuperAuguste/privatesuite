@@ -11,7 +11,7 @@
                     <transition class="post-title" v-for="(idx, i) in this.postBody" :key="i">
                       
                        <div class="slider" v-if="sortedPosts(idx.link)">
-                         <div class="image"/>
+                         <div class="image" v-bind:style="idx.acf.image ? `background-image: url('${idx.acf.image.url}'); background-size: cover;'` : ``"/>
 
                           <a :href="idx.link.replace('https://privatesuitemag.com', '')">
 
